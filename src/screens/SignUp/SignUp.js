@@ -155,13 +155,13 @@ const SignUp = (props) => {
           <TextInput style={styles.input}
             placeholder="Password"
             autoComplete="off"
-            secureTextEntry={toogle}
+            secureTextEntry={!toogle}
             onChangeText={(password) => validatePassword(password)}
           //onEndEditing={(e) => handleValidateFields(e.nativeEvent.text)}
           />
           <TouchableOpacity onPress={() => setToogle(!toogle)} style={styles.show}>
             {
-              !toogle ? <Text>hide</Text> : <Text>show</Text>
+              toogle ? <Text>hide</Text> : <Text>show</Text>
             }
           </TouchableOpacity>
         </View>

@@ -34,7 +34,6 @@ const Home = (props) => {
       age,
       task: []
     })
-    fetchingActivity()
   }, [])
 
   const fetchingActivity = async () => {

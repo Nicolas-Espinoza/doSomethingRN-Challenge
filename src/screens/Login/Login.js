@@ -22,7 +22,7 @@ const Login = (props) => {
 
   React.useEffect(() => {
     //AsyncStorage.removeItem('users')
-    const gettingUsers = async () => {
+    props.navigation.addListener('focus', async () => {
       try {
         const JSONvalue = await AsyncStorage.getItem('users')
         if (JSONvalue == null) {
@@ -38,8 +38,8 @@ const Login = (props) => {
       } catch (error) {
         console.log('error login', error)
       }
-    }
-    gettingUsers()
+    })
+
   }, [])
 
   const goSignUp = () => {
@@ -101,11 +101,11 @@ const Login = (props) => {
             placeholder='password'
             autoComplete='off'
             onChangeText={(password) => setcredentials({ ...credentials, password })}
-            secureTextEntry={toogle}
+            secureTextEntry={!toogle}
           />
           <TouchableOpacity style={styles.show} onPress={() => setToogle(!toogle)}>
             {
-              !toogle ? <Text>hide</Text> : <Text>show</Text>
+              toogle ? <Text>hide</Text> : <Text>show</Text>
             }
           </TouchableOpacity>
         </View>
